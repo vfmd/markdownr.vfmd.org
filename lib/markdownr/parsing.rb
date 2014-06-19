@@ -1,5 +1,4 @@
 require 'vfmd'
-require 'unmarkdown'
 
 module Markdownr
   module Parsing
@@ -19,8 +18,5 @@ module Markdownr
       return outputByteArray.toString().strip()
     end
 
-    def unmarkdown(html)
-      Unmarkdown.parse(html, allow_scripts: true, fenced_code_blocks: true)
-    end
   end
 end

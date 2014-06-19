@@ -47,20 +47,15 @@ module Markdownr
 
       # HTML -> Markdown
       if accepts.include?('text/x-markdown')
-        unless content_type.include?('text/html')
-          status 400
-          return 'You must post `text/html` when accepting `text/x-markdown`.'
-        end
-
-        headers 'Content-Type' => 'text/x-markdown; charset=utf8'
-        return unmarkdown(body)
+        status 400
+        return 'markdownr.vfmd.org does not convert HTML to Markdown.'
       end
 
       # Markdown -> HTML
       if accepts.include?('text/html')
         unless content_type.include?('text/x-markdown')
           status 400
-          return 'You must post `text/x-markdown` when accepting `text/html`.'
+          return 'You must post `text/x-markdown`.'
         end
 
         headers 'Content-Type' => 'text/html; charset=utf8'
