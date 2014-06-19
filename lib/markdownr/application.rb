@@ -45,25 +45,32 @@ module Markdownr
       end
       content_type = env['CONTENT_TYPE']
 
-      # HTML -> Markdown
+      # Preliminary checks
       if accepts.include?('text/x-markdown')
         status 400
         return 'markdownr.vfmd.org does not convert HTML to Markdown.'
       end
 
+      unless content_type.include?('text/x-markdown')
+        status 400
+        return 'You must post `text/x-markdown`.'
+      end
+
       # Markdown -> HTML
       if accepts.include?('text/html')
-        unless content_type.include?('text/x-markdown')
-          status 400
-          return 'You must post `text/x-markdown`.'
-        end
-
         headers 'Content-Type' => 'text/html; charset=utf8'
         return markdown(body)
       end
 
+      # Markdown -> text (parse tree)
+      if accepts.include?('text/plain')
+        headers 'Content-Type' => 'text/plain; charset=utf8'
+        return markdown(body, parse_tree: true)
+      end
+
       status 406
-      'You must explicitly accept `text/x-markdown` or `text/html`.'
+      'You must explicitly accept `text/x-markdown` or `text/plain`.'
     end
+
   end
 end

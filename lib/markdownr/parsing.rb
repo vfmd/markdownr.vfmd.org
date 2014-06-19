@@ -11,10 +11,16 @@ module Markdownr
       document.setContent(text)
 
       outputByteArray = Vfmd::VfmdByteArray.new()
-      htmlRenderer = Vfmd::HtmlRenderer.new()
-      htmlRenderer.setOutputDevice(Vfmd::VfmdBufferOutputDevice.new(outputByteArray))
-      htmlRenderer.render(document.parseTree())
 
+      if options[:parse_tree]
+        treeRenderer = Vfmd::TreeRenderer.new()
+        treeRenderer.setOutputDevice(Vfmd::VfmdBufferOutputDevice.new(outputByteArray))
+        treeRenderer.render(document.parseTree())
+      else
+        htmlRenderer = Vfmd::HtmlRenderer.new()
+        htmlRenderer.setOutputDevice(Vfmd::VfmdBufferOutputDevice.new(outputByteArray))
+        htmlRenderer.render(document.parseTree())
+      end
       return outputByteArray.toString().strip()
     end
 
