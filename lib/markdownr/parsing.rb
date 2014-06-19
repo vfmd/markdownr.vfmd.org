@@ -1,4 +1,4 @@
-require 'redcarpet'
+require 'vfmd'
 require 'unmarkdown'
 
 module Markdownr
@@ -8,21 +8,15 @@ module Markdownr
     def markdown(text, options = {})
       return '' unless text and text.length > 0
 
-      default_options = {
-        no_intra_emphasis: true,
-        tables: true,
-        fenced_code_blocks: true,
-        autolink: true,
-        strikethrough: true,
-        space_after_headers: true,
-        superscript: true,
-        with_toc_data: true,
-        underline: true,
-        highlight: true
-      }
+      document = Vfmd::VfmdDocument.new()
+      document.setContent(text)
 
-      markdown = Redcarpet::Markdown.new(Markdownr::Renderer, default_options.merge(options))
-      markdown.render(text).strip
+      outputByteArray = Vfmd::VfmdByteArray.new()
+      htmlRenderer = Vfmd::HtmlRenderer.new()
+      htmlRenderer.setOutputDevice(Vfmd::VfmdBufferOutputDevice.new(outputByteArray))
+      htmlRenderer.render(document.parseTree())
+
+      return outputByteArray.toString().strip()
     end
 
     def unmarkdown(html)
