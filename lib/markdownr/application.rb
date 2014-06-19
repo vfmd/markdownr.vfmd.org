@@ -4,7 +4,21 @@ module Markdownr
   class Application < Sinatra::Application
     include Parsing
 
-    DEFAULT_MARKDOWN = "Welcome to [Markdownr.com](http://markdownr.com). We hope you **really** enjoy using this.\n\nJust type some [markdown](http://daringfireball.net/projects/markdown) on the left and see it on the right. *Simple as that.*".freeze
+    DEFAULT_MARKDOWN = "### vfmd dingus\n" +
+                       "\n" +
+                       "This is a demo for the [vfmd] Markdown parser.\n" +
+                       "\n" +
+                       "You can type in Markdown on the left and see it parsed and rendered " +
+                       "by [vfmd] on the right.\n" +
+                       "\n" +
+                       "This demo is a fork of [Markdownr] by Sam [Soff.es], modified\n" +
+                       "to use *vfmd* as the Markdown parser (instead of *Redcarpet*).\n" +
+                       "\n" +
+                       "[vfmd]: http://www.vfmd.org/\n" +
+                       "[Soff.es]: http://soff.es/\n" +
+                       "[Markdownr]: http://markdownr.com/"
+                       .freeze()
+
     DEFAULT_HTML = Parsing.markdown(DEFAULT_MARKDOWN).freeze
 
     # Homepage
