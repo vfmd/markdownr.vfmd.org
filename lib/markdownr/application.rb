@@ -6,17 +6,21 @@ module Markdownr
 
     DEFAULT_MARKDOWN = "### vfmd dingus\n" +
                        "\n" +
-                       "This is a demo for the [vfmd] Markdown parser.\n" +
+                       "This is a demo for the [vfmd]\n" +
+                       "Markdown parser.\n" +
                        "\n" +
-                       "You can type in Markdown on the left and see it parsed and rendered " +
+                       "You can type in Markdown on the\n" +
+                       "left and see it parsed and rendered\n" +
                        "by [vfmd] on the right.\n" +
                        "\n" +
-                       "This demo is a fork of [Markdownr] by Sam [Soff.es], modified\n" +
-                       "to use *vfmd* as the Markdown parser (instead of *Redcarpet*).\n" +
+                       "This demo is a fork of [Markdownr]\n" +
+                       "by Sam [Soff.es], modified\n" +
+                       "to use *vfmd* as the Markdown parser\n" +
+                       "(instead of *Redcarpet*).\n" +
                        "\n" +
                        "[vfmd]: http://www.vfmd.org/\n" +
                        "[Soff.es]: http://soff.es/\n" +
-                       "[Markdownr]: http://markdownr.com/"
+                       "[Markdownr]: http://markdownr.com/\n"
                        .freeze()
 
     DEFAULT_HTML = Parsing.markdown(DEFAULT_MARKDOWN).freeze
