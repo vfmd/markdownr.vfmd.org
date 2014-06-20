@@ -1,6 +1,8 @@
 @import "reset";
 @import "shared";
 
+$app_width: 960px;
+
 // Clear
 .clear:after {
   clear: both;
@@ -36,7 +38,7 @@ a {
 
 div#copyright {
   @include shadow;
-  width: 640px;
+  width: $app_width;
   margin: 40px auto 30px;
   color: #aaa;
   font-size: 0.85em;
@@ -60,7 +62,7 @@ div#copyright {
 
 // Home
 div#content {
-  width: 640px;
+  width: $app_width;
   margin: 50px auto 0;
   position: relative;
 
@@ -69,12 +71,12 @@ div#content {
   }
 
   div#input {
-    width: 300px;
+    width: $app_width / 2 - 20;
     margin-right: 40px;
   }
 
   div#output, textarea {
-    width: 288px;
+    width: $app_width / 2 - 32;
     height: 390px;
     border: 1px solid #999;
     background: #fff;
@@ -113,7 +115,7 @@ div#loading {
 }
 
 #output-switches {
-  width: 298px;
+  width: $app_width / 2 - 22;
   font-size: 0.8em;
   position: absolute;
   right: 0;
