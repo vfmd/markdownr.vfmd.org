@@ -1,7 +1,7 @@
 @import "reset";
 @import "shared";
 
-div#input, textarea#html-output, div#loading, a#toggle-output, div#copyright {
+div#input, textarea#raw-output, div#loading, a#toggle-output, div#copyright {
   display: none;
 }
 

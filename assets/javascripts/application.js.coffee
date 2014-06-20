@@ -7,7 +7,7 @@ $ ->
   form = $('form#notepad_form')
   notepad = $('textarea#notepad')
   output = $('div#output')
-  html_output = $('textarea#html-output')
+  raw_output = $('textarea#raw-output')
   richtext_switch = $('a#richtext-switch')
   rawhtml_switch = $('a#rawhtml-switch')
   loading = $('div#loading')
@@ -30,7 +30,7 @@ $ ->
       dataType: 'html'
     ).done (data) ->
       output.html(data)
-      html_output.val(data)
+      raw_output.val(data)
       loading.hide()
       last_markdown = markdown
 
@@ -40,11 +40,11 @@ $ ->
     if htmlDisplay == HtmlDisplay.richText
       activate_output_switch(richtext_switch)
       output.show()
-      html_output.hide()
+      raw_output.hide()
     else if htmlDisplay == HtmlDisplay.rawHtml
       activate_output_switch(rawhtml_switch)
       output.hide()
-      html_output.show()
+      raw_output.show()
     last_html_display = htmlDisplay
 
   activate_output_switch = (sw) ->
