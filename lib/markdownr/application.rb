@@ -36,7 +36,7 @@ module Markdownr
     end
 
     # API
-    post '/api/v2/convert' do
+    post '/api/v1/convert' do
       body = request.body.read
       unless body && body.length > 0
         status 400
