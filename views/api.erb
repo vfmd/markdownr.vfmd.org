@@ -19,4 +19,12 @@ Content-Type: text/html;charset=utf-8
 &lt;p&gt;This is some &lt;strong&gt;markdown&lt;/strong&gt;.&lt;/p&gt;
 </pre>
 
+  <h4>Example usage</h4>
+<pre>
+$ curl -H "Content-Type: text/x-markdown" \
+       -H "Accept: text/html" \
+       --data "This is some **markdown**" \
+       http://markdownr.vfmd.org/api/v1/convert
+</pre>
+
 </section>
