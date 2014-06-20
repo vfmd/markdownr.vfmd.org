@@ -27,4 +27,36 @@ $ curl -H "Content-Type: text/x-markdown" \
        http://markdownr.vfmd.org/api/v1/convert
 </pre>
 
+  <h3>Markdown to parse tree</h3>
+  <h4>Request</h4>
+<pre>POST /api/v1/convert HTTP/1.1
+Accept: text/plain
+Content-Type: text/x-markdown
+
+Some *markdown*
+</pre>
+
+  <h4>Response</h4>
+<pre>HTTP/1.1 200 OK
+Content-Type: text/plain;charset=utf-8
+
++- block (paragraph)
+   |
+   +- span (text-span)
+   |  'Some '
+   +- span (emphasis)
+      [*]
+      |
+      +- span (text-span)
+         'markdown'
+</pre>
+
+  <h4>Example usage</h4>
+<pre>
+$ curl -H "Content-Type: text/x-markdown" \
+       -H "Accept: text/plain" \
+       --data "Some *markdown*" \
+       http://markdownr.vfmd.org/api/v1/convert
+</pre>
+
 </section>
