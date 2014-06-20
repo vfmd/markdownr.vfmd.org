@@ -112,11 +112,41 @@ div#loading {
   -webkit-transition: all 0.1s linear;
 }
 
-a#toggle-output {
+#output-switches {
+  width: 298px;
   font-size: 0.8em;
   position: absolute;
-  bottom: -27px;
   right: 0;
+
+  ul, li {
+    display: inline;
+  }
+
+  ul {
+    position: absolute;
+    right: 0;
+    li {
+      margin-left: 1em;
+      a {
+        padding: 4px;
+        border: 1px solid transparent;
+      }
+    }
+  }
+}
+
+#output-switches {
+  a.active {
+    color: #777;
+    cursor: default;
+    text-decoration: none;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+  }
+}
+
+#output-switches {
+  bottom: -27px;
 }
 
 // Markdown
